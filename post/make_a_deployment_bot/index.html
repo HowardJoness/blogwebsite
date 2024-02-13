@@ -1,0 +1,707 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>做一个Github Page更新通知机器人 | 笔洛格</title>
+
+<link rel="shortcut icon" href="https://blog.howardjones.cn/favicon.ico?v=1707818713203">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.howardjones.cn/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            笔洛格
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/suibe" class="menu gt-a-link">
+                            随笔小句
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1707818713203" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    做一个Github Page更新通知机器人
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-01-05 ·
+                    </time>
+                    
+                        <a href="https://blog.howardjones.cn/tag/Z_B6fhSVl/" class="post-tags">
+                            # Python
+                        </a>
+                    
+                        <a href="https://blog.howardjones.cn/tag/6ZWsh1YCxG/" class="post-tags">
+                            # Github
+                        </a>
+                    
+                        <a href="https://blog.howardjones.cn/tag/CkZuBi5Gvr/" class="post-tags">
+                            # 微信机器人
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>刚刚把博客的关于更新了一下，但是屑Github总是要等几十秒钟才能更新完成。<br>
+但我，天生急性子，又不想来回刷新博客和github。因此，咱来做一个机器人。</p>
+<p>首先，来理一下思路。<br>
+咱需要github的更新时间（实时的）以及一个能够让我注意到的提示渠道。</p>
+<p>首先，挑一个提示渠道：</p>
+<ul>
+<li>邮箱 <em>(不常用)</em></li>
+<li>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili <em>(消息提示不明显)</em></li>
+<li>QQ <em>(煞笔腾讯已经封了我10多个小号了)</em></li>
+<li>微信 <em>(还好)</em></li>
+<li>X <em>(我有病？)</em></li>
+<li>Steam <em>(我有病？)</em></li>
+<li>Github <em>(《鲁迅让周树人提醒他做事》)</em></li>
+</ul>
+<p>看起来还是微信比较好一点。</p>
+<p>代码上的思路就是：<br>
+程序获取代码仓库更新状态<br>
+如果更新了，发消息给微信<br>
+不然就等着</p>
+<hr>
+<p>思路有了，实践开始。<br>
+Visual Studio Code，启动！</p>
+<p>询问了鸡批替后 咱获得了一个新的库：PyGithub<br>
+<img src="https://blog.howardjones.cn/post-images/1704451955973.png" alt="" loading="lazy"><br>
+史用</p>
+<pre><code class="language-PowerShell">pip install pyGithub
+</code></pre>
+<p>莱安装这个库</p>
+<p>首先，咱来简单写一段测试：<br>
+当仓库的Deployment出现一个一分钟前的更新时，循环输出“GET”：</p>
+<pre><code class="language-python">from github import Github
+import datetime
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_b11444444fkunwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 检查最新 Deployment 的时间
+        now = datetime.datetime.utcnow()
+        deployment_time = latest_deployment.created_at
+        if (now - deployment_time).total_seconds() &lt; 60:
+            print('GET')
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+
+</code></pre>
+<p>运行！<br>
+但是……报错了……</p>
+<pre><code class="language-bash">Traceback (most recent call last):
+  File &quot;d:\CODE\main.py&quot;, line 25, in &lt;module&gt;
+    if (now - deployment_time).total_seconds() &lt; 60:
+        ~~~~^~~~~~~~~~~~~~~~~
+TypeError: can't subtract offset-naive and offset-aware datetimes
+</code></pre>
+<p>WEEEEEEE什么呢<br>
+简单查了一下，是因为GitHub API它返回的时间数据带时区信息<br>
+妹由事 咱有pytz</p>
+<pre><code class="language-python">from github import Github
+import datetime
+import pytz  # 报错の拯救者
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 检查最新 Deployment 的时间
+        now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)  # 设置咱的时间带有时区数据
+        deployment_time = latest_deployment.created_at
+        if (now - deployment_time).total_seconds() &lt; 60:
+            print('GET')
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<p>再次运行 成功力<br>
+<img src="https://blog.howardjones.cn/post-images/1704455657706.png" alt="" loading="lazy"><br>
+（若报错内容类似如下信息：</p>
+<pre><code class="language-bash">Traceback (most recent call last):
+  File &quot;d:\CODE\main.py&quot;, line 14, in &lt;module&gt;
+    repo = g.get_repo(repo_name)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\MainClass.py&quot;, line 380, in get_repo
+    headers, data = self.__requester.requestJsonAndCheck(&quot;GET&quot;, url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\Requester.py&quot;, line 494, in requestJsonAndCheck
+    return self.__check(*self.requestJson(verb, url, parameters, headers, input, self.__customConnection(url)))    
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\Requester.py&quot;, line 525, in __check
+    raise self.createException(status, responseHeaders, data)
+github.GithubException.BadCredentialsException: 401 {&quot;message&quot;: &quot;Bad credentials&quot;, &quot;documentation_url&quot;: &quot;https://docs.github.com/rest&quot;}
+</code></pre>
+<p>说明尼妹由修改尼的token和repo_name）</p>
+<p>但是，现在只是部署完毕的消息，并不是部署上线的消息<br>
+怎办？</p>
+<p>在GitHub API中，Deployment 对象包含了状态信息，咱能通过判断他的状态获取出成功与否</p>
+<pre><code class="language-python">from github import Github
+import datetime
+import pytz
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 获取与最新 Deployment 相关联的状态
+        statuses = latest_deployment.get_statuses()
+        if statuses.totalCount &gt; 0:
+            latest_status = statuses[0]
+            if latest_status.state == &quot;success&quot;:
+                # 检查最新 Deployment 的时间
+                now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+                deployment_time = latest_deployment.created_at
+                if (now - deployment_time).total_seconds() &lt; 60:
+                    print('VOCALLLLLLLLLLL 部署成功！！！！！')
+                    time.sleep(1)  # 稍等一秒以避免过快打印
+                else:
+                    print(&quot;一分钟内没有部署&quot;)
+            else:
+                print(&quot;上一次最近的部署还妹豪&quot;)
+        else:
+            print(&quot;最新状态未知&quot;)
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<p>将这段代码投入使用，可以发现运行正常<br>
+<img src="https://blog.howardjones.cn/post-images/1704456454756.png" alt="" loading="lazy"></p>
+<hr>
+<p>现在，咱内核有了，要开始写推送机制了<br>
+这里使用<a href="https://github.com/cluic">cluic</a>大佬写的<a href="https://github.com/cluic/wxauto">wxauto库</a>制作wx机器人<br>
+这一步非常简单 只写个框架就行了</p>
+<pre><code class="language-python"># wxbot.py
+from wxauto import *
+
+# 获取当前微信客户端
+wx = WeChat()
+
+def sendmsgs(t):
+    wx.SendMsg(t, '你大号（或是接收消息的人/群）')
+</code></pre>
+<p>回到main.py，加入调用框架的代码，程序就写完力：</p>
+<pre><code class="language-python"># main.py
+from github import Github
+import datetime
+import pytz
+import wxbot
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+deployment_success = False
+Deploy_in_deployment = False
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 获取与最新 Deployment 相关联的状态
+        statuses = latest_deployment.get_statuses()
+        if statuses.totalCount &gt; 0:
+            latest_status = statuses[0]
+            if latest_status.state == &quot;success&quot;:
+                # 检查最新 Deployment 的时间
+                now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+                deployment_time = latest_deployment.created_at
+                if (now - deployment_time).total_seconds() &lt; 60:
+                    if deployment_success == False:
+                        deployment_success = True
+                        wxbot.sendmsgs(&quot;网站部署成功！&quot;)
+                else:
+                    print(&quot;一分钟内没有部署&quot;)
+                    deployment_success = False
+                    Deploy_in_deployment = False
+            else:
+                print(&quot;上一次最近的部署还妹豪&quot;)
+                if Deploy_in_deployment == False:
+                    Deploy_in_deployment = True
+                    wxbot.sendmsgs(&quot;正在部署最新更新的网站……&quot;)
+        else:
+            print(&quot;最新状态未知&quot;)
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<pre><code class="language-python"># wxbot.py
+from wxauto import *
+
+# 获取当前微信客户端
+wx = WeChat()
+
+def sendmsgs(t):
+    wx.SendMsg(t,'不告诉你')
+</code></pre>
+<p>效果图：<br>
+<img src="https://blog.howardjones.cn/post-images/1704458493321.jpg" alt="" loading="lazy"></p>
+<p>这下 妈妈再也不用担心我错过网站更新力！</p>
+<hr>
+<p>注：<br>
+[1]: wxauto需使用的微信版本为3.9.8.X，版本安装包可在<a href="https://github.com/cluic/wxauto">wxauto的github仓库</a>中下载</p>
+<pre><code class="language-python">#!python3
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Author: tikic@qq.com
+Source: https://github.com/cluic/wxauto
+License: MIT License
+Version: 3.3.5.3
+&quot;&quot;&quot;
+import uiautomation as uia
+import win32gui, win32con
+import win32clipboard as wc
+import time
+import os
+
+AUTHOR_EMAIL = 'tikic@qq.com'
+UPDATE = '2021-09-06'
+VERSION = '3.3.5.3'
+
+COPYDICT = {}
+
+class WxParam:
+    SYS_TEXT_HEIGHT = 33
+    TIME_TEXT_HEIGHT = 34
+    RECALL_TEXT_HEIGHT = 45
+    CHAT_TEXT_HEIGHT = 52
+    CHAT_IMG_HEIGHT = 117
+    SpecialTypes = ['[文件]', '[图片]', '[视频]', '[音乐]', '[链接]']
+    
+
+class WxUtils:
+    def SplitMessage(MsgItem):
+        uia.SetGlobalSearchTimeout(0)
+        MsgItemName = MsgItem.Name
+        if MsgItem.BoundingRectangle.height() == WxParam.SYS_TEXT_HEIGHT:
+            Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        elif MsgItem.BoundingRectangle.height() == WxParam.TIME_TEXT_HEIGHT:
+            Msg = ('Time', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        elif MsgItem.BoundingRectangle.height() == WxParam.RECALL_TEXT_HEIGHT:
+            if '撤回' in MsgItemName:
+                Msg = ('Recall', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+            else:
+                Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        else:
+            Index = 1
+            User = MsgItem.ButtonControl(foundIndex=Index)
+            try:
+                while True:
+                    if User.Name == '':
+                        Index += 1
+                        User = MsgItem.ButtonControl(foundIndex=Index)
+                    else:
+                        break
+                Msg = (User.Name, MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+            except:
+                Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        uia.SetGlobalSearchTimeout(10.0)
+        return Msg
+    
+    def SetClipboard(data, dtype='text'):
+        '''复制文本信息或图片到剪贴板
+        data : 要复制的内容，str 或 Image 图像'''
+        if dtype.upper() == 'TEXT':
+            type_data = win32con.CF_UNICODETEXT
+        elif dtype.upper() == 'IMAGE':
+            from io import BytesIO
+            type_data = win32con.CF_DIB
+            output = BytesIO()
+            data.save(output, 'BMP')
+            data = output.getvalue()[14:]
+        else:
+            raise ValueError('param (dtype) only &quot;text&quot; or &quot;image&quot; supported')
+        wc.OpenClipboard()
+        wc.EmptyClipboard()
+        wc.SetClipboardData(type_data, data)
+        wc.CloseClipboard()
+
+    def Screenshot(hwnd, to_clipboard=True):
+        '''为句柄为hwnd的窗口程序截图
+        hwnd : 句柄
+        to_clipboard : 是否复制到剪贴板
+        '''
+        import pyscreenshot as shot
+        bbox = win32gui.GetWindowRect(hwnd)
+        win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, 0, 0, 0,\
+                              win32con.SWP_SHOWWINDOW|win32con.SWP_NOMOVE|win32con.SWP_NOSIZE)
+        win32gui.SetWindowPos(hwnd, win32con.HWND_NOTOPMOST, 0, 0, 0, 0,\
+                              win32con.SWP_SHOWWINDOW|win32con.SWP_NOMOVE|win32con.SWP_NOSIZE)
+        win32gui.BringWindowToTop(hwnd)
+        im = shot.grab(bbox)
+        if to_clipboard:
+            WxUtils.SetClipboard(im, 'image')
+        return im
+    
+    def SavePic(savepath=None, filename=None):
+        Pic = uia.WindowControl(ClassName='ImagePreviewWnd', Name='图片查看')
+        Pic.SendKeys('{Ctrl}s')
+        SaveAs = Pic.WindowControl(ClassName='#32770', Name='另存为...')
+        SaveAsEdit = SaveAs.EditControl(ClassName='Edit', Name='文件名:')
+        SaveButton = Pic.ButtonControl(ClassName='Button', Name='保存(S)')
+        PicName, Ex = os.path.splitext(SaveAsEdit.GetValuePattern().Value)
+        if not savepath:
+            savepath = os.getcwd()
+        if not filename:
+            filename = PicName
+        FilePath = os.path.realpath(os.path.join(savepath, filename + Ex))
+        SaveAsEdit.SendKeys(FilePath)
+        SaveButton.Click()
+        Pic.SendKeys('{Esc}')
+
+    def ControlSize(control):
+        locate = control.BoundingRectangle
+        size = (locate.width(), locate.height())
+        return size
+    
+    def ClipboardFormats(unit=0, *units):
+        units = list(units)
+        wc.OpenClipboard()
+        u = wc.EnumClipboardFormats(unit)
+        wc.CloseClipboard()
+        units.append(u)
+        if u:
+            units = WxUtils.ClipboardFormats(u, *units)
+        return units
+
+    def CopyDict():
+        Dict = {}
+        for i in WxUtils.ClipboardFormats():
+            if i == 0:
+                continue
+            wc.OpenClipboard()
+            try:
+                content = wc.GetClipboardData(i)
+                wc.CloseClipboard()
+            except:
+                wc.CloseClipboard()
+                raise ValueError
+            if len(str(i))&gt;=4:
+                Dict[str(i)] = content
+        return Dict
+        
+class WeChat:
+    def __init__(self):
+        self.UiaAPI = uia.WindowControl(ClassName='WeChatMainWndForPC')
+        self.SessionList = self.UiaAPI.ListControl(Name='会话')
+        # self.EditMsg = self.UiaAPI.EditControl(Name='输入')
+        self.SearchBox = self.UiaAPI.EditControl(Name='搜索')
+        self.MsgList = self.UiaAPI.ListControl(Name='消息')
+        self.SessionItemList = []
+    
+    def GetSessionList(self, reset=False):
+        '''获取当前会话列表，更新会话列表'''
+        self.SessionItem = self.SessionList.ListItemControl()
+        SessionList = []
+        if reset:
+            self.SessionItemList = []
+        for i in range(100):
+            try:
+                name = self.SessionItem.Name
+            except:
+                break
+            if name not in self.SessionItemList:
+                self.SessionItemList.append(name)
+            if name not in SessionList:
+                SessionList.append(name)
+            self.SessionItem = self.SessionItem.GetNextSiblingControl()
+        return SessionList
+        
+    def Search(self, keyword):
+        '''
+        查找微信好友或关键词
+        keywords: 要查找的关键词，str   * 最好完整匹配，不完全匹配只会选取搜索框第一个
+        '''
+        self.UiaAPI.SetFocus()
+        # time.sleep(0.2)
+        self.UiaAPI.SendKeys('{Ctrl}f', waitTime=1)
+        self.SearchBox.SendKeys(keyword, waitTime=1.5)
+        self.SearchBox.SendKeys('{Enter}')
+    
+    def ChatWith(self, who, RollTimes=None):
+        '''
+        打开某个聊天框
+        who : 要打开的聊天框好友名，str;  * 最好完整匹配，不完全匹配只会选取搜索框第一个
+        RollTimes : 默认向下滚动多少次，再进行搜索
+        '''
+        self.UiaAPI.SwitchToThisWindow()
+        RollTimes = 10 if not RollTimes else RollTimes
+        def roll_to(who=who, RollTimes=RollTimes):
+            for i in range(RollTimes):
+                if who not in self.GetSessionList()[:-1]:
+                    self.SessionList.WheelDown(wheelTimes=3, waitTime=0.1*i)
+                else:
+                    # time.sleep(0.5)
+                    self.SessionList.ListItemControl(Name=who).Click(simulateMove=False)
+                    return 1
+            return 0
+        rollresult = roll_to()
+        if rollresult:
+            return 1
+        else:
+            self.Search(who)
+            return roll_to(RollTimes=1)
+    
+    def SendMsg(self, msg, window_title, clear=True):
+        '''向当前窗口发送消息
+        msg : 要发送的消息
+        clear : 是否清除当前已编辑内容
+        '''
+        self.UiaAPI.SwitchToThisWindow()
+        EditMsg = self.UiaAPI.EditControl(Name=f'{window_title}')
+        if clear:
+            EditMsg.SendKeys('{Ctrl}a', waitTime=0)
+        EditMsg.SendKeys(msg, waitTime=0)
+        EditMsg.SendKeys('{Enter}', waitTime=0)
+    def SendFiles(self, *filepath, window_title, not_exists='ignore'):
+        &quot;&quot;&quot;向当前聊天窗口发送文件
+        not_exists: 如果未找到指定文件，继续或终止程序
+        *filepath: 要复制文件的绝对路径&quot;&quot;&quot;
+        global COPYDICT
+        key = ''
+        for file in filepath:
+            file = os.path.realpath(file)
+            if not os.path.exists(file):
+                if not_exists.upper() == 'IGNORE':
+                    print('File not exists:', file)
+                    continue
+                elif not_exists.upper() == 'RAISE':
+                    raise FileExistsError('File Not Exists: %s'%file)
+                else:
+                    raise ValueError('param not_exists only &quot;ignore&quot; or &quot;raise&quot; supported')
+            key += '&lt;EditElement type=&quot;3&quot; filepath=&quot;%s&quot; shortcut=&quot;&quot; /&gt;'%file
+        if not key:
+            return 0
+        if not COPYDICT:
+            EditMsg = self.UiaAPI.EditControl(Name=f'{window_title}')
+            EditMsg.SendKeys(' ', waitTime=0)
+            EditMsg.SendKeys('{Ctrl}a', waitTime=0)
+            EditMsg.SendKeys('{Ctrl}c', waitTime=0)
+            EditMsg.SendKeys('{Delete}', waitTime=0)
+            while True:
+                try:
+                    COPYDICT = WxUtils.CopyDict()
+                    break
+                except:
+                    pass
+        wc.OpenClipboard()
+        wc.EmptyClipboard()
+        wc.SetClipboardData(13, '')
+        wc.SetClipboardData(16, b'\x04\x08\x00\x00')
+        wc.SetClipboardData(1, b'')
+        wc.SetClipboardData(7, b'')
+        for i in COPYDICT:
+            copydata = COPYDICT[i].replace(b'&lt;EditElement type=&quot;0&quot;&gt;&lt;![CDATA[ ]]&gt;', key.encode()).replace(b'type=&quot;0&quot;', b'type=&quot;3&quot;')
+            wc.SetClipboardData(int(i), copydata)
+        wc.CloseClipboard()
+        self.SendClipboard()
+        return 1
+
+    def SendClipboard(self,window_title):
+        '''向当前聊天页面发送剪贴板复制的内容'''
+        self.SendMsg('{Ctrl}v',window_title)
+        
+    @property
+    def GetAllMessage(self):
+        '''获取当前窗口中加载的所有聊天记录'''
+        MsgDocker = []
+        MsgItems = self.MsgList.GetChildren()
+        for MsgItem in MsgItems:
+            MsgDocker.append(WxUtils.SplitMessage(MsgItem))
+        return MsgDocker
+    
+    @property
+    def GetLastMessage(self):
+        '''获取当前窗口中最后一条聊天记录'''
+        uia.SetGlobalSearchTimeout(1.0)
+        MsgItem = self.MsgList.GetChildren()[-1]
+        Msg = WxUtils.SplitMessage(MsgItem)
+        uia.SetGlobalSearchTimeout(10.0)
+        return Msg
+    
+    def LoadMoreMessage(self, n=0.1):
+        '''定位到当前聊天页面，并往上滚动鼠标滚轮，加载更多聊天记录到内存'''
+        n = 0.1 if n&lt;0.1 else 1 if n&gt;1 else n
+        self.MsgList.WheelUp(wheelTimes=int(500*n), waitTime=0.1)
+        
+    def SendScreenshot(self, name=None, classname=None):
+        '''发送某个桌面程序的截图，如：微信、记事本...
+        name : 要发送的桌面程序名字，如：微信
+        classname : 要发送的桌面程序类别名，一般配合 spy 小工具使用，以获取类名，如：微信的类名为 WeChatMainWndForPC'''
+        if name and classname:
+            return 0
+        else:
+            hwnd = win32gui.FindWindow(classname, name)
+        if hwnd:
+            WxUtils.Screenshot(hwnd)
+            self.SendClipboard()
+            return 1
+        else:
+            return 0
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://blog.howardjones.cn/post-images/1704462215831.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://blog.howardjones.cn/post-images/1704459513991.png" alt="" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <!-- <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://blog.howardjones.cn/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

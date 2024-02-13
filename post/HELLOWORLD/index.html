@@ -1,0 +1,250 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>如何使用Python写Hello World | 笔洛格</title>
+
+<link rel="shortcut icon" href="https://blog.howardjones.cn/favicon.ico?v=1707818713203">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.howardjones.cn/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            笔洛格
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/suibe" class="menu gt-a-link">
+                            随笔小句
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1707818713203" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    如何使用Python写Hello World
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-01-20 ·
+                    </time>
+                    
+                        <a href="https://blog.howardjones.cn/tag/-orAr91BH/" class="post-tags">
+                            # 不正经の教学
+                        </a>
+                    
+                        <a href="https://blog.howardjones.cn/tag/Z_B6fhSVl/" class="post-tags">
+                            # Python
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>（免责声明：若您在正式项目中真的使用了此方法来输出日志，说明您是傻逼）</p>
+<!-- more -->
+<p>使用Python写Hello world程序是一件非常繁琐且困难的事。</p>
+<p>他涉及到网络、系统、字符串、进制转换等相关领域的知识。</p>
+<p>今天，我们将编写一点简单的代码来实现输出Hello World。</p>
+<h1 id="1准备工作">1.准备工作</h1>
+<p>要输出Hello World，首先咱需要告诉计算机咱要输出什么。<br>
+<img src="https://blog.howardjones.cn/post-images/1705760758328.png" alt="" loading="lazy">新建一个文本文件“text.txt”用来存放咱的输出数据。<br>
+<img src="https://blog.howardjones.cn/post-images/1705760875598.png" alt="" loading="lazy">在 text.txt 中写入咱需要输出的数据，然后保存并关闭。</p>
+<p>新建 main.py ，开始编程。</p>
+<h1 id="2初试身手">2.初试身手</h1>
+<p>进入VSCode，咱先要来读取text.txt中的内容。<br>
+使用open功能来读取：</p>
+<pre><code class="language-python">f = open(&quot;text.txt&quot;, &quot;r&quot;)
+t = f.read()
+f.close
+</code></pre>
+<p>运行程序，我们可以发现什么都没有，但其实程序以及读取了text.txt中的内容并储存到了t变量中。</p>
+<p>接下来，我们要将字符串转化为电脑读得懂的语言——十六进制<br>
+使用“bitstring”库来将字符串转为十六进制<br>
+安装“bitstring”库：</p>
+<pre><code class="language-bash">pip install bitstring
+</code></pre>
+<p>若尼没有可爱的CFW，建议尼使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">清华pypi镜像站</a></p>
+<p>安装完毕后，在尼程序的头上加一行代码：</p>
+<pre><code class="language-python">from bitstring import BitArray
+</code></pre>
+<p>用于导入这个库。</p>
+<p>然后，使用</p>
+<pre><code class="language-python">tb = BitArray(bytes=t.encode('utf-8'))
+</code></pre>
+<p>将t字符串转换为十六进制 再将十六进制数据存储到tb上。</p>
+<p>为了方便我们查看程序的各项信息，咱使用open写一个函数，用于向日志文件（log.log）写入调试信息。</p>
+<pre><code class="language-python">def log(text):
+    f = open(&quot;log.log&quot;, &quot;w&quot;)
+    f.write(text)
+    f.close()
+</code></pre>
+<p>使用log(str(type(tb)))来查看tb变量的类型<br>
+<img src="https://blog.howardjones.cn/post-images/1705762581947.png" alt="" loading="lazy"><br>
+可以发现是bitstring.bitarray.BitArray类型的<br>
+把type去掉，可以得到Hello World的十六进制数据<br>
+<img src="https://blog.howardjones.cn/post-images/1705762873210.png" alt="" loading="lazy"></p>
+<h1 id="3渐入佳境">3.渐入佳境</h1>
+<p>获得16进制字符串后，我们要生成系统读得懂的命令<br>
+通过<a href="https://cowtransfer.com/s/7fab069bfa2f4f">奶牛快传（口令：adq7jq）</a>来下载服务端文件<br>
+在本地或服务器上运行std.bat，敲击两下空格使ip和端口默认（0.0.0.0:2224）</p>
+<p>运行成功后，使用curl请求一下试试看<br>
+若返回ERROR 说明搭建成功<br>
+<img src="https://blog.howardjones.cn/post-images/1705805783447.png" alt="" loading="lazy"></p>
+<p>在main.py中，使用requests来获得能被计算机识别的命令</p>
+<pre><code class="language-python">r = requests.post(f&quot;http://127.0.0.1:2224/?yl={tb}&quot;)
+r = r.text
+</code></pre>
+<p>最后，使用os.system执行这条命令</p>
+<pre><code class="language-python">os.system(r)
+</code></pre>
+<p>运行！<br>
+<img src="https://blog.howardjones.cn/post-images/1705806123054.png" alt="" loading="lazy"><br>
+可以看到，运行成功了</p>
+<h1 id="4后期维护">4.后期维护</h1>
+<p>为了让调用更加方便，咱要将这几行代码封装成函数</p>
+<pre><code class="language-python">def p(file='text.txt'):
+    from bitstring import BitArray
+    import requests
+    import os
+    f = open(&quot;text.txt&quot;, &quot;r&quot;)
+    t = f.read()
+    f.close()
+
+
+    tb = str((BitArray(bytes=t.encode('utf-8'))))
+    r = requests.get(f&quot;http://127.0.0.1:2224/?yl={tb}&quot;)
+    r = r.text
+    os.system(r)
+
+if __name__ == '__main__':
+    p()
+</code></pre>
+<p>然后就可以在任意文件里调用此命令力！</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.howardjones.cn/post/make_a_deployment_bot/" class="post-title gt-a-link">
+                    做一个Github Page更新通知机器人
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <!-- <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://blog.howardjones.cn/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

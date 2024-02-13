@@ -1,0 +1,224 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>关于“洛博特”微信机器人的一些机制设定 | 笔洛格</title>
+
+<link rel="shortcut icon" href="https://blog.howardjones.cn/favicon.ico?v=1707818713203">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.howardjones.cn/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            笔洛格
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/suibe" class="menu gt-a-link">
+                            随笔小句
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1707818713203" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    关于“洛博特”微信机器人的一些机制设定
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-12-31 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="宠物系统">宠物系统</h1>
+<p>宠物管理系统是一个模拟宠物养护的互动程序，旨在为用户提供一个虚拟宠物养育和互动的体验。通过这个系统，用户可以创建宠物，与它们互动，并维护宠物的各项需求。</p>
+<h2 id="功能详解">功能详解</h2>
+<h3 id="创建宠物">创建宠物</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物品种、名称、归属者。</li>
+<li><strong>操作</strong>: 用户输入所需信息后，系统生成一个唯一的宠物ID，并创建对应的宠物实例。</li>
+<li><strong>数据存储</strong>: 宠物信息将存储在本地JSON文件中。</li>
+</ul>
+<h3 id="更名">更名</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物唯一ID，新名称。</li>
+<li><strong>操作</strong>: 根据ID找到对应宠物，更改其名称。</li>
+<li><strong>效果</strong>: 宠物的名称将被更新。</li>
+</ul>
+<h3 id="喂食和饮水">喂食和饮水</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物唯一ID。</li>
+<li><strong>操作</strong>: 增加宠物的饱食度和饮水度。</li>
+<li><strong>效果</strong>: 提高宠物的健康状态，防止健康度下降。</li>
+</ul>
+<h3 id="逗宠物玩">逗宠物玩</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物唯一ID。</li>
+<li><strong>操作</strong>: 增加宠物的心情。</li>
+<li><strong>效果</strong>: 提升宠物的心情值，避免宠物离家出走。</li>
+</ul>
+<h3 id="丢弃宠物">丢弃宠物</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物唯一ID。</li>
+<li><strong>操作</strong>: 从系统中删除指定的宠物。</li>
+<li><strong>效果</strong>: 宠物的所有数据将从本地JSON文件中被移除。</li>
+</ul>
+<h3 id="查询宠物状态">查询宠物状态</h3>
+<ul>
+<li><strong>输入参数</strong>: 宠物唯一ID。</li>
+<li><strong>操作</strong>: 显示宠物的详细状态信息。</li>
+<li><strong>返回信息</strong>: 包括名称、品种、归属者、饱食度、饮水度、健康度、心情、存活状态和主人。</li>
+</ul>
+<h2 id="系统规则">系统规则</h2>
+<h3 id="宠物健康管理">宠物健康管理</h3>
+<ul>
+<li><strong>健康度</strong>: 若5个现实天内宠物的健康度为20以下，则宠物将死亡。</li>
+<li><strong>饱食度和饮水度</strong>: 每天不喂食或饮水会扣除10点相应值。当值为0时，将开始扣除健康度。</li>
+</ul>
+<h3 id="心情管理">心情管理</h3>
+<ul>
+<li><strong>心情</strong>: 每天不逗宠物玩会扣除10点心情值。心情值为0时，宠物会离家出走，回来后扣除50点饱食度和饮水度。</li>
+</ul>
+<h3 id="宠物死亡">宠物死亡</h3>
+<ul>
+<li><strong>死亡处理</strong>: 宠物死亡后，除了查询存活状态、主人和宠物唯一ID外，其余查询将返回None。</li>
+</ul>
+<h2 id="数据存储和处理">数据存储和处理</h2>
+<ul>
+<li><strong>本地存储</strong>: 所有宠物数据存储于本地JSON文件。</li>
+<li><strong>数据格式</strong>: 数据以结构化格式存储，便于读取和修改。</li>
+<li><strong>唯一ID</strong>: 每个宠物都有一个唯一的ID，用于识别和操作。</li>
+</ul>
+<h2 id="用户交互">用户交互</h2>
+<ul>
+<li><strong>用户输入</strong>: 所有操作都需要用户提供宠物的唯一ID，除了创建宠物。</li>
+<li><strong>反馈</strong>: 系统提供详细的操作反馈和宠物状态更新信息。</li>
+</ul>
+<h2 id="异常处理">异常处理</h2>
+<ul>
+<li><strong>数据损坏</strong>: 当本地JSON文件损坏或无法读取时，系统应提供相应的错误信息。</li>
+<li><strong>非法操作</strong>: 对不存在或已死亡的宠物执行操作时，系统将返回错误提示。</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <!-- <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://blog.howardjones.cn/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.howardjones.cn</id>
+    <title>笔洛格</title>
+    <updated>2024-02-13T10:05:15.248Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.howardjones.cn"/>
+    <link rel="self" href="https://blog.howardjones.cn/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://blog.howardjones.cn/images/avatar.png</logo>
+    <icon>https://blog.howardjones.cn/favicon.ico</icon>
+    <rights>All rights reserved 2024, 笔洛格</rights>
+    <entry>
+        <title type="html"><![CDATA[ChatGPT Prompt 编辑器]]></title>
+        <id>https://blog.howardjones.cn/post/ChatGPTPromptEditor-Chinese.md/</id>
+        <link href="https://blog.howardjones.cn/post/ChatGPTPromptEditor-Chinese.md/">
+        </link>
+        <updated>2024-02-13T09:59:37.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="chatgpt-prompt-编辑器">ChatGPT Prompt 编辑器</h1>
+<h2 id="前言">前言</h2>
+<p>一个使用 Streamlit 写的 Prompt 编辑器</p>
+<figure data-type="image" tabindex="1"><a href="https://star-history.com/#HowardJoness/Prompt_editor&amp;Date"><img src="https://api.star-history.com/svg?repos=HowardJoness/Prompt_editor&amp;type=Date" alt="Star History Chart" loading="lazy"></a></figure>
+<h2 id="主要功能">主要功能</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-549284"><label class="task-list-item-label" for="task-item-549284"> 支持通过 ChatGPT 快速测试 Prompt</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5064041"><label class="task-list-item-label" for="task-item-5064041"> 支持计算 Prompt 所耗费的token与资金</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4887959"><label class="task-list-item-label" for="task-item-4887959"> 支持选择 ChatGPT 模型</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1466395"><label class="task-list-item-label" for="task-item-1466395"> 支持设置 ChatGPT 代理</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6026080"><label class="task-list-item-label" for="task-item-6026080"> 支持热更改 API KEY</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7778938"><label class="task-list-item-label" for="task-item-7778938"> 支持热更改 ChatGPT API</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8051696"><label class="task-list-item-label" for="task-item-8051696"> Prompt 测试环境支持流式传输</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3213307"><label class="task-list-item-label" for="task-item-3213307"> 支持切换语言</label></li>
+</ul>
+<h2 id="快速开始">快速开始</h2>
+<p>在运行前请先至 app.py 中修改 API KEY</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+streamlit run app.py
+</code></pre>
+<h2 id="访问项目">访问项目</h2>
+<p>一般来讲，使用 http://localhost:8501/ 即可访问项目</p>
+<h2 id="项目预览">项目预览</h2>
+<figure data-type="image" tabindex="2"><img src="https://blog.howardjones.cn/post-images/1707818491354.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://blog.howardjones.cn/post-images/1707818496123.png" alt="" loading="lazy"></figure>
+<h2 id="运行环境">运行环境</h2>
+<ul>
+<li>Python 3.8+</li>
+<li>Streamlit 1.28.2</li>
+</ul>
+<h2 id="声明">声明</h2>
+<p>本项目遵循 Apache-2.0 license 开源协议，使用前请悉知。 如果你想商用或程序定制，请先与我们联系，分享你的利益。</p>
+<h2 id="反馈交流">反馈交流</h2>
+<h3 id="如果你遇到bug欢迎反馈">如果你遇到BUG欢迎反馈</h3>
+<ul>
+<li>使用 Issues 反馈 BUG</li>
+<li>通过<a href="howardjones1919810@gmail.com">邮箱</a>向我反馈问题</li>
+</ul>
+<h2 id="更多">更多</h2>
+<p>无</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于 YVD-2024-0121 漏洞的具体细节]]></title>
+        <id>https://blog.howardjones.cn/post/yvd-2024-0121/</id>
+        <link href="https://blog.howardjones.cn/post/yvd-2024-0121/">
+        </link>
+        <updated>2024-01-31T11:03:47.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Tips:此漏洞已于几天前被修复</p>
+</blockquote>
+<h1 id="1前情提要">1.前情提要</h1>
+<p>差不多1月上旬一场期末复习语文模拟考的时候 我想到了这个问题</p>
+<p>学校有刷脸的机器，而且也有推送端<br>
+点开推送链接会出现类似于如下的界面<br>
+<img src="https://blog.howardjones.cn/post-images/1706700597750.png" alt="" loading="lazy"><br>
+于是我就在想<br>
+如果抓取数据包并稍作修改<br>
+能不能获得别人的数据？</p>
+<h1 id="2实操">2.实操</h1>
+<p>说干就干<br>
+我史用<a href="https://github.com/reqable/reqable-app">小蓝鸟(原名Httpcanary 本文中附的链接是Github上已更名的“Reqable”项目)</a>对推送回来的链接进行抓包</p>
+<p>成功抓到数据包<img src="https://blog.howardjones.cn/post-images/1706700999209.png" alt="" loading="lazy"></p>
+<p>抓到后尝试能否通过简单修改url以及请求头获得别人的数据</p>
+<p>成功获取别人的数据<br>
+（无留档图片）</p>
+<p>将请求头数据打包发到电脑上，使用python尝试重发请求</p>
+<p>成功重发请求<br>
+<img src="https://blog.howardjones.cn/post-images/1706701272545.png" alt="" loading="lazy"></p>
+<p>稍加代码，即可批量爬取图片<br>
+<img src="https://blog.howardjones.cn/post-images/1706701386325.png" alt="" loading="lazy"><br>
+<img src="https://blog.howardjones.cn/post-images/1706701444995.png" alt="" loading="lazy"><br>
+成功复现bug</p>
+<h1 id="3我的评价">3.我的评价</h1>
+<p><s>我的评价：史</s><br>
+虽然学校以及<em>未知的</em> 软件公司已修复此漏洞 但我还是想说</p>
+<p>我理解尼想要转型成数字化管理 但尼能布能在数字化管理的同时<strong>考虑一下学生的隐私怎么保护</strong>，这玩意才是最重要的</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[突发奇想的数学问题]]></title>
+        <id>https://blog.howardjones.cn/post/mathquestion1/</id>
+        <link href="https://blog.howardjones.cn/post/mathquestion1/">
+        </link>
+        <updated>2024-01-26T10:19:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>（来自一节无聊的语文课……）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>（来自一节无聊的语文课……）</p>
+<!-- more -->
+<p>我们平时求一个长方形的面积会用 S=ab(长乘宽) 这个公式对吧？</p>
+<p>如果要把这个平面图形转换为立体图形，我们会给他一个厚度，公式变为 S=abh(长乘宽乘高)</p>
+<p>更形象地解释：<br>
+这是一个平面<img src="https://blog.howardjones.cn/post-images/1706265109781.png" alt="" loading="lazy"></p>
+<p>乘上高度后就有了厚度<br>
+<img src="https://blog.howardjones.cn/post-images/1706265362734.png" alt="" loading="lazy"></p>
+<p>但问题就出在高度上</p>
+<p>在平面图形中，长和宽都有数据，高度为0</p>
+<p>我们在 S=ab 的基础上乘 h(高) 就是为了让这个平面有高度</p>
+<p>但，0乘任何数都得0</p>
+<p>所以当 ab(长乘宽) 乘 h(高) 时，数据应该为0</p>
+<p>但事实是 ab(长乘宽) 乘 h(高) 得数不是0</p>
+<p>那么 h(高) 可能原本就有数据 因为他乘 h(高) 不得0</p>
+<p>但如果 h(高) 原来有数据，那就意味着 S=ab(长乘宽) 其实有个<em>隐形的 h(高)</em>  只是我们看不到而已</p>
+<p>既然 S=ab(长乘宽) 已经包含了原始高度数据，就说明 S=ab(长乘宽) 其实是个体积计算公式</p>
+<p>但事实是他是面积公式</p>
+<p><em><strong>WHY?</strong></em></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何使用Python写Hello World]]></title>
+        <id>https://blog.howardjones.cn/post/HELLOWORLD/</id>
+        <link href="https://blog.howardjones.cn/post/HELLOWORLD/">
+        </link>
+        <updated>2024-01-20T12:38:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>（免责声明：若您在正式项目中真的使用了此方法来输出日志，说明您是傻逼）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>（免责声明：若您在正式项目中真的使用了此方法来输出日志，说明您是傻逼）</p>
+<!-- more -->
+<p>使用Python写Hello world程序是一件非常繁琐且困难的事。</p>
+<p>他涉及到网络、系统、字符串、进制转换等相关领域的知识。</p>
+<p>今天，我们将编写一点简单的代码来实现输出Hello World。</p>
+<h1 id="1准备工作">1.准备工作</h1>
+<p>要输出Hello World，首先咱需要告诉计算机咱要输出什么。<br>
+<img src="https://blog.howardjones.cn/post-images/1705760758328.png" alt="" loading="lazy">新建一个文本文件“text.txt”用来存放咱的输出数据。<br>
+<img src="https://blog.howardjones.cn/post-images/1705760875598.png" alt="" loading="lazy">在 text.txt 中写入咱需要输出的数据，然后保存并关闭。</p>
+<p>新建 main.py ，开始编程。</p>
+<h1 id="2初试身手">2.初试身手</h1>
+<p>进入VSCode，咱先要来读取text.txt中的内容。<br>
+使用open功能来读取：</p>
+<pre><code class="language-python">f = open(&quot;text.txt&quot;, &quot;r&quot;)
+t = f.read()
+f.close
+</code></pre>
+<p>运行程序，我们可以发现什么都没有，但其实程序以及读取了text.txt中的内容并储存到了t变量中。</p>
+<p>接下来，我们要将字符串转化为电脑读得懂的语言——十六进制<br>
+使用“bitstring”库来将字符串转为十六进制<br>
+安装“bitstring”库：</p>
+<pre><code class="language-bash">pip install bitstring
+</code></pre>
+<p>若尼没有可爱的CFW，建议尼使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">清华pypi镜像站</a></p>
+<p>安装完毕后，在尼程序的头上加一行代码：</p>
+<pre><code class="language-python">from bitstring import BitArray
+</code></pre>
+<p>用于导入这个库。</p>
+<p>然后，使用</p>
+<pre><code class="language-python">tb = BitArray(bytes=t.encode('utf-8'))
+</code></pre>
+<p>将t字符串转换为十六进制 再将十六进制数据存储到tb上。</p>
+<p>为了方便我们查看程序的各项信息，咱使用open写一个函数，用于向日志文件（log.log）写入调试信息。</p>
+<pre><code class="language-python">def log(text):
+    f = open(&quot;log.log&quot;, &quot;w&quot;)
+    f.write(text)
+    f.close()
+</code></pre>
+<p>使用log(str(type(tb)))来查看tb变量的类型<br>
+<img src="https://blog.howardjones.cn/post-images/1705762581947.png" alt="" loading="lazy"><br>
+可以发现是bitstring.bitarray.BitArray类型的<br>
+把type去掉，可以得到Hello World的十六进制数据<br>
+<img src="https://blog.howardjones.cn/post-images/1705762873210.png" alt="" loading="lazy"></p>
+<h1 id="3渐入佳境">3.渐入佳境</h1>
+<p>获得16进制字符串后，我们要生成系统读得懂的命令<br>
+通过<a href="https://cowtransfer.com/s/7fab069bfa2f4f">奶牛快传（口令：adq7jq）</a>来下载服务端文件<br>
+在本地或服务器上运行std.bat，敲击两下空格使ip和端口默认（0.0.0.0:2224）</p>
+<p>运行成功后，使用curl请求一下试试看<br>
+若返回ERROR 说明搭建成功<br>
+<img src="https://blog.howardjones.cn/post-images/1705805783447.png" alt="" loading="lazy"></p>
+<p>在main.py中，使用requests来获得能被计算机识别的命令</p>
+<pre><code class="language-python">r = requests.post(f&quot;http://127.0.0.1:2224/?yl={tb}&quot;)
+r = r.text
+</code></pre>
+<p>最后，使用os.system执行这条命令</p>
+<pre><code class="language-python">os.system(r)
+</code></pre>
+<p>运行！<br>
+<img src="https://blog.howardjones.cn/post-images/1705806123054.png" alt="" loading="lazy"><br>
+可以看到，运行成功了</p>
+<h1 id="4后期维护">4.后期维护</h1>
+<p>为了让调用更加方便，咱要将这几行代码封装成函数</p>
+<pre><code class="language-python">def p(file='text.txt'):
+    from bitstring import BitArray
+    import requests
+    import os
+    f = open(&quot;text.txt&quot;, &quot;r&quot;)
+    t = f.read()
+    f.close()
+
+
+    tb = str((BitArray(bytes=t.encode('utf-8'))))
+    r = requests.get(f&quot;http://127.0.0.1:2224/?yl={tb}&quot;)
+    r = r.text
+    os.system(r)
+
+if __name__ == '__main__':
+    p()
+</code></pre>
+<p>然后就可以在任意文件里调用此命令力！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[做一个Github Page更新通知机器人]]></title>
+        <id>https://blog.howardjones.cn/post/make_a_deployment_bot/</id>
+        <link href="https://blog.howardjones.cn/post/make_a_deployment_bot/">
+        </link>
+        <updated>2024-01-05T10:24:50.000Z</updated>
+        <content type="html"><![CDATA[<p>刚刚把博客的关于更新了一下，但是屑Github总是要等几十秒钟才能更新完成。<br>
+但我，天生急性子，又不想来回刷新博客和github。因此，咱来做一个机器人。</p>
+<p>首先，来理一下思路。<br>
+咱需要github的更新时间（实时的）以及一个能够让我注意到的提示渠道。</p>
+<p>首先，挑一个提示渠道：</p>
+<ul>
+<li>邮箱 <em>(不常用)</em></li>
+<li>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili <em>(消息提示不明显)</em></li>
+<li>QQ <em>(煞笔腾讯已经封了我10多个小号了)</em></li>
+<li>微信 <em>(还好)</em></li>
+<li>X <em>(我有病？)</em></li>
+<li>Steam <em>(我有病？)</em></li>
+<li>Github <em>(《鲁迅让周树人提醒他做事》)</em></li>
+</ul>
+<p>看起来还是微信比较好一点。</p>
+<p>代码上的思路就是：<br>
+程序获取代码仓库更新状态<br>
+如果更新了，发消息给微信<br>
+不然就等着</p>
+<hr>
+<p>思路有了，实践开始。<br>
+Visual Studio Code，启动！</p>
+<p>询问了鸡批替后 咱获得了一个新的库：PyGithub<br>
+<img src="https://blog.howardjones.cn/post-images/1704451955973.png" alt="" loading="lazy"><br>
+史用</p>
+<pre><code class="language-PowerShell">pip install pyGithub
+</code></pre>
+<p>莱安装这个库</p>
+<p>首先，咱来简单写一段测试：<br>
+当仓库的Deployment出现一个一分钟前的更新时，循环输出“GET”：</p>
+<pre><code class="language-python">from github import Github
+import datetime
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_b11444444fkunwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 检查最新 Deployment 的时间
+        now = datetime.datetime.utcnow()
+        deployment_time = latest_deployment.created_at
+        if (now - deployment_time).total_seconds() &lt; 60:
+            print('GET')
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+
+</code></pre>
+<p>运行！<br>
+但是……报错了……</p>
+<pre><code class="language-bash">Traceback (most recent call last):
+  File &quot;d:\CODE\main.py&quot;, line 25, in &lt;module&gt;
+    if (now - deployment_time).total_seconds() &lt; 60:
+        ~~~~^~~~~~~~~~~~~~~~~
+TypeError: can't subtract offset-naive and offset-aware datetimes
+</code></pre>
+<p>WEEEEEEE什么呢<br>
+简单查了一下，是因为GitHub API它返回的时间数据带时区信息<br>
+妹由事 咱有pytz</p>
+<pre><code class="language-python">from github import Github
+import datetime
+import pytz  # 报错の拯救者
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 检查最新 Deployment 的时间
+        now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)  # 设置咱的时间带有时区数据
+        deployment_time = latest_deployment.created_at
+        if (now - deployment_time).total_seconds() &lt; 60:
+            print('GET')
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<p>再次运行 成功力<br>
+<img src="https://blog.howardjones.cn/post-images/1704455657706.png" alt="" loading="lazy"><br>
+（若报错内容类似如下信息：</p>
+<pre><code class="language-bash">Traceback (most recent call last):
+  File &quot;d:\CODE\main.py&quot;, line 14, in &lt;module&gt;
+    repo = g.get_repo(repo_name)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\MainClass.py&quot;, line 380, in get_repo
+    headers, data = self.__requester.requestJsonAndCheck(&quot;GET&quot;, url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\Requester.py&quot;, line 494, in requestJsonAndCheck
+    return self.__check(*self.requestJson(verb, url, parameters, headers, input, self.__customConnection(url)))    
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+  File &quot;C:\Users\HowardJonessssssssss\AppData\Local\Programs\Python\Python311\Lib\site-packages\github\Requester.py&quot;, line 525, in __check
+    raise self.createException(status, responseHeaders, data)
+github.GithubException.BadCredentialsException: 401 {&quot;message&quot;: &quot;Bad credentials&quot;, &quot;documentation_url&quot;: &quot;https://docs.github.com/rest&quot;}
+</code></pre>
+<p>说明尼妹由修改尼的token和repo_name）</p>
+<p>但是，现在只是部署完毕的消息，并不是部署上线的消息<br>
+怎办？</p>
+<p>在GitHub API中，Deployment 对象包含了状态信息，咱能通过判断他的状态获取出成功与否</p>
+<pre><code class="language-python">from github import Github
+import datetime
+import pytz
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 获取与最新 Deployment 相关联的状态
+        statuses = latest_deployment.get_statuses()
+        if statuses.totalCount &gt; 0:
+            latest_status = statuses[0]
+            if latest_status.state == &quot;success&quot;:
+                # 检查最新 Deployment 的时间
+                now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+                deployment_time = latest_deployment.created_at
+                if (now - deployment_time).total_seconds() &lt; 60:
+                    print('VOCALLLLLLLLLLL 部署成功！！！！！')
+                    time.sleep(1)  # 稍等一秒以避免过快打印
+                else:
+                    print(&quot;一分钟内没有部署&quot;)
+            else:
+                print(&quot;上一次最近的部署还妹豪&quot;)
+        else:
+            print(&quot;最新状态未知&quot;)
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<p>将这段代码投入使用，可以发现运行正常<br>
+<img src="https://blog.howardjones.cn/post-images/1704456454756.png" alt="" loading="lazy"></p>
+<hr>
+<p>现在，咱内核有了，要开始写推送机制了<br>
+这里使用<a href="https://github.com/cluic">cluic</a>大佬写的<a href="https://github.com/cluic/wxauto">wxauto库</a>制作wx机器人<br>
+这一步非常简单 只写个框架就行了</p>
+<pre><code class="language-python"># wxbot.py
+from wxauto import *
+
+# 获取当前微信客户端
+wx = WeChat()
+
+def sendmsgs(t):
+    wx.SendMsg(t, '你大号（或是接收消息的人/群）')
+</code></pre>
+<p>回到main.py，加入调用框架的代码，程序就写完力：</p>
+<pre><code class="language-python"># main.py
+from github import Github
+import datetime
+import pytz
+import wxbot
+
+# GitHub 令牌、用户信息和仓库设置
+token = &quot;cnm_y11444444114nmebiekanwolinpaiw1oai1mei4you5aaaa&quot;  # 贵人的令牌
+repo_name = &quot;???????????/bwobuzhidaoe&quot;  # 贵人的仓库名（用户名/仓库名）
+
+# 使用 GitHub 令牌创建一个 Github 实例
+g = Github(token)
+
+# 获取指定的仓库
+repo = g.get_repo(repo_name)
+deployment_success = False
+Deploy_in_deployment = False
+
+while True:
+    # 获取仓库的最新 Deployment
+    deployments = repo.get_deployments()
+    if deployments.totalCount &gt; 0:
+        latest_deployment = deployments[0]
+        # 获取与最新 Deployment 相关联的状态
+        statuses = latest_deployment.get_statuses()
+        if statuses.totalCount &gt; 0:
+            latest_status = statuses[0]
+            if latest_status.state == &quot;success&quot;:
+                # 检查最新 Deployment 的时间
+                now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+                deployment_time = latest_deployment.created_at
+                if (now - deployment_time).total_seconds() &lt; 60:
+                    if deployment_success == False:
+                        deployment_success = True
+                        wxbot.sendmsgs(&quot;网站部署成功！&quot;)
+                else:
+                    print(&quot;一分钟内没有部署&quot;)
+                    deployment_success = False
+                    Deploy_in_deployment = False
+            else:
+                print(&quot;上一次最近的部署还妹豪&quot;)
+                if Deploy_in_deployment == False:
+                    Deploy_in_deployment = True
+                    wxbot.sendmsgs(&quot;正在部署最新更新的网站……&quot;)
+        else:
+            print(&quot;最新状态未知&quot;)
+    else:
+        print(&quot;草尼这妹部署过啊&quot;)
+        break
+</code></pre>
+<pre><code class="language-python"># wxbot.py
+from wxauto import *
+
+# 获取当前微信客户端
+wx = WeChat()
+
+def sendmsgs(t):
+    wx.SendMsg(t,'不告诉你')
+</code></pre>
+<p>效果图：<br>
+<img src="https://blog.howardjones.cn/post-images/1704458493321.jpg" alt="" loading="lazy"></p>
+<p>这下 妈妈再也不用担心我错过网站更新力！</p>
+<hr>
+<p>注：<br>
+[1]: wxauto需使用的微信版本为3.9.8.X，版本安装包可在<a href="https://github.com/cluic/wxauto">wxauto的github仓库</a>中下载</p>
+<pre><code class="language-python">#!python3
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Author: tikic@qq.com
+Source: https://github.com/cluic/wxauto
+License: MIT License
+Version: 3.3.5.3
+&quot;&quot;&quot;
+import uiautomation as uia
+import win32gui, win32con
+import win32clipboard as wc
+import time
+import os
+
+AUTHOR_EMAIL = 'tikic@qq.com'
+UPDATE = '2021-09-06'
+VERSION = '3.3.5.3'
+
+COPYDICT = {}
+
+class WxParam:
+    SYS_TEXT_HEIGHT = 33
+    TIME_TEXT_HEIGHT = 34
+    RECALL_TEXT_HEIGHT = 45
+    CHAT_TEXT_HEIGHT = 52
+    CHAT_IMG_HEIGHT = 117
+    SpecialTypes = ['[文件]', '[图片]', '[视频]', '[音乐]', '[链接]']
+    
+
+class WxUtils:
+    def SplitMessage(MsgItem):
+        uia.SetGlobalSearchTimeout(0)
+        MsgItemName = MsgItem.Name
+        if MsgItem.BoundingRectangle.height() == WxParam.SYS_TEXT_HEIGHT:
+            Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        elif MsgItem.BoundingRectangle.height() == WxParam.TIME_TEXT_HEIGHT:
+            Msg = ('Time', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        elif MsgItem.BoundingRectangle.height() == WxParam.RECALL_TEXT_HEIGHT:
+            if '撤回' in MsgItemName:
+                Msg = ('Recall', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+            else:
+                Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        else:
+            Index = 1
+            User = MsgItem.ButtonControl(foundIndex=Index)
+            try:
+                while True:
+                    if User.Name == '':
+                        Index += 1
+                        User = MsgItem.ButtonControl(foundIndex=Index)
+                    else:
+                        break
+                Msg = (User.Name, MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+            except:
+                Msg = ('SYS', MsgItemName, ''.join([str(i) for i in MsgItem.GetRuntimeId()]))
+        uia.SetGlobalSearchTimeout(10.0)
+        return Msg
+    
+    def SetClipboard(data, dtype='text'):
+        '''复制文本信息或图片到剪贴板
+        data : 要复制的内容，str 或 Image 图像'''
+        if dtype.upper() == 'TEXT':
+            type_data = win32con.CF_UNICODETEXT
+        elif dtype.upper() == 'IMAGE':
+            from io import BytesIO
+            type_data = win32con.CF_DIB
+            output = BytesIO()
+            data.save(output, 'BMP')
+            data = output.getvalue()[14:]
+        else:
+            raise ValueError('param (dtype) only &quot;text&quot; or &quot;image&quot; supported')
+        wc.OpenClipboard()
+        wc.EmptyClipboard()
+        wc.SetClipboardData(type_data, data)
+        wc.CloseClipboard()
+
+    def Screenshot(hwnd, to_clipboard=True):
+        '''为句柄为hwnd的窗口程序截图
+        hwnd : 句柄
+        to_clipboard : 是否复制到剪贴板
+        '''
+        import pyscreenshot as shot
+        bbox = win32gui.GetWindowRect(hwnd)
+        win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, 0, 0, 0,\
+                              win32con.SWP_SHOWWINDOW|win32con.SWP_NOMOVE|win32con.SWP_NOSIZE)
+        win32gui.SetWindowPos(hwnd, win32con.HWND_NOTOPMOST, 0, 0, 0, 0,\
+                              win32con.SWP_SHOWWINDOW|win32con.SWP_NOMOVE|win32con.SWP_NOSIZE)
+        win32gui.BringWindowToTop(hwnd)
+        im = shot.grab(bbox)
+        if to_clipboard:
+            WxUtils.SetClipboard(im, 'image')
+        return im
+    
+    def SavePic(savepath=None, filename=None):
+        Pic = uia.WindowControl(ClassName='ImagePreviewWnd', Name='图片查看')
+        Pic.SendKeys('{Ctrl}s')
+        SaveAs = Pic.WindowControl(ClassName='#32770', Name='另存为...')
+        SaveAsEdit = SaveAs.EditControl(ClassName='Edit', Name='文件名:')
+        SaveButton = Pic.ButtonControl(ClassName='Button', Name='保存(S)')
+        PicName, Ex = os.path.splitext(SaveAsEdit.GetValuePattern().Value)
+        if not savepath:
+            savepath = os.getcwd()
+        if not filename:
+            filename = PicName
+        FilePath = os.path.realpath(os.path.join(savepath, filename + Ex))
+        SaveAsEdit.SendKeys(FilePath)
+        SaveButton.Click()
+        Pic.SendKeys('{Esc}')
+
+    def ControlSize(control):
+        locate = control.BoundingRectangle
+        size = (locate.width(), locate.height())
+        return size
+    
+    def ClipboardFormats(unit=0, *units):
+        units = list(units)
+        wc.OpenClipboard()
+        u = wc.EnumClipboardFormats(unit)
+        wc.CloseClipboard()
+        units.append(u)
+        if u:
+            units = WxUtils.ClipboardFormats(u, *units)
+        return units
+
+    def CopyDict():
+        Dict = {}
+        for i in WxUtils.ClipboardFormats():
+            if i == 0:
+                continue
+            wc.OpenClipboard()
+            try:
+                content = wc.GetClipboardData(i)
+                wc.CloseClipboard()
+            except:
+                wc.CloseClipboard()
+                raise ValueError
+            if len(str(i))&gt;=4:
+                Dict[str(i)] = content
+        return Dict
+        
+class WeChat:
+    def __init__(self):
+        self.UiaAPI = uia.WindowControl(ClassName='WeChatMainWndForPC')
+        self.SessionList = self.UiaAPI.ListControl(Name='会话')
+        # self.EditMsg = self.UiaAPI.EditControl(Name='输入')
+        self.SearchBox = self.UiaAPI.EditControl(Name='搜索')
+        self.MsgList = self.UiaAPI.ListControl(Name='消息')
+        self.SessionItemList = []
+    
+    def GetSessionList(self, reset=False):
+        '''获取当前会话列表，更新会话列表'''
+        self.SessionItem = self.SessionList.ListItemControl()
+        SessionList = []
+        if reset:
+            self.SessionItemList = []
+        for i in range(100):
+            try:
+                name = self.SessionItem.Name
+            except:
+                break
+            if name not in self.SessionItemList:
+                self.SessionItemList.append(name)
+            if name not in SessionList:
+                SessionList.append(name)
+            self.SessionItem = self.SessionItem.GetNextSiblingControl()
+        return SessionList
+        
+    def Search(self, keyword):
+        '''
+        查找微信好友或关键词
+        keywords: 要查找的关键词，str   * 最好完整匹配，不完全匹配只会选取搜索框第一个
+        '''
+        self.UiaAPI.SetFocus()
+        # time.sleep(0.2)
+        self.UiaAPI.SendKeys('{Ctrl}f', waitTime=1)
+        self.SearchBox.SendKeys(keyword, waitTime=1.5)
+        self.SearchBox.SendKeys('{Enter}')
+    
+    def ChatWith(self, who, RollTimes=None):
+        '''
+        打开某个聊天框
+        who : 要打开的聊天框好友名，str;  * 最好完整匹配，不完全匹配只会选取搜索框第一个
+        RollTimes : 默认向下滚动多少次，再进行搜索
+        '''
+        self.UiaAPI.SwitchToThisWindow()
+        RollTimes = 10 if not RollTimes else RollTimes
+        def roll_to(who=who, RollTimes=RollTimes):
+            for i in range(RollTimes):
+                if who not in self.GetSessionList()[:-1]:
+                    self.SessionList.WheelDown(wheelTimes=3, waitTime=0.1*i)
+                else:
+                    # time.sleep(0.5)
+                    self.SessionList.ListItemControl(Name=who).Click(simulateMove=False)
+                    return 1
+            return 0
+        rollresult = roll_to()
+        if rollresult:
+            return 1
+        else:
+            self.Search(who)
+            return roll_to(RollTimes=1)
+    
+    def SendMsg(self, msg, window_title, clear=True):
+        '''向当前窗口发送消息
+        msg : 要发送的消息
+        clear : 是否清除当前已编辑内容
+        '''
+        self.UiaAPI.SwitchToThisWindow()
+        EditMsg = self.UiaAPI.EditControl(Name=f'{window_title}')
+        if clear:
+            EditMsg.SendKeys('{Ctrl}a', waitTime=0)
+        EditMsg.SendKeys(msg, waitTime=0)
+        EditMsg.SendKeys('{Enter}', waitTime=0)
+    def SendFiles(self, *filepath, window_title, not_exists='ignore'):
+        &quot;&quot;&quot;向当前聊天窗口发送文件
+        not_exists: 如果未找到指定文件，继续或终止程序
+        *filepath: 要复制文件的绝对路径&quot;&quot;&quot;
+        global COPYDICT
+        key = ''
+        for file in filepath:
+            file = os.path.realpath(file)
+            if not os.path.exists(file):
+                if not_exists.upper() == 'IGNORE':
+                    print('File not exists:', file)
+                    continue
+                elif not_exists.upper() == 'RAISE':
+                    raise FileExistsError('File Not Exists: %s'%file)
+                else:
+                    raise ValueError('param not_exists only &quot;ignore&quot; or &quot;raise&quot; supported')
+            key += '&lt;EditElement type=&quot;3&quot; filepath=&quot;%s&quot; shortcut=&quot;&quot; /&gt;'%file
+        if not key:
+            return 0
+        if not COPYDICT:
+            EditMsg = self.UiaAPI.EditControl(Name=f'{window_title}')
+            EditMsg.SendKeys(' ', waitTime=0)
+            EditMsg.SendKeys('{Ctrl}a', waitTime=0)
+            EditMsg.SendKeys('{Ctrl}c', waitTime=0)
+            EditMsg.SendKeys('{Delete}', waitTime=0)
+            while True:
+                try:
+                    COPYDICT = WxUtils.CopyDict()
+                    break
+                except:
+                    pass
+        wc.OpenClipboard()
+        wc.EmptyClipboard()
+        wc.SetClipboardData(13, '')
+        wc.SetClipboardData(16, b'\x04\x08\x00\x00')
+        wc.SetClipboardData(1, b'')
+        wc.SetClipboardData(7, b'')
+        for i in COPYDICT:
+            copydata = COPYDICT[i].replace(b'&lt;EditElement type=&quot;0&quot;&gt;&lt;![CDATA[ ]]&gt;', key.encode()).replace(b'type=&quot;0&quot;', b'type=&quot;3&quot;')
+            wc.SetClipboardData(int(i), copydata)
+        wc.CloseClipboard()
+        self.SendClipboard()
+        return 1
+
+    def SendClipboard(self,window_title):
+        '''向当前聊天页面发送剪贴板复制的内容'''
+        self.SendMsg('{Ctrl}v',window_title)
+        
+    @property
+    def GetAllMessage(self):
+        '''获取当前窗口中加载的所有聊天记录'''
+        MsgDocker = []
+        MsgItems = self.MsgList.GetChildren()
+        for MsgItem in MsgItems:
+            MsgDocker.append(WxUtils.SplitMessage(MsgItem))
+        return MsgDocker
+    
+    @property
+    def GetLastMessage(self):
+        '''获取当前窗口中最后一条聊天记录'''
+        uia.SetGlobalSearchTimeout(1.0)
+        MsgItem = self.MsgList.GetChildren()[-1]
+        Msg = WxUtils.SplitMessage(MsgItem)
+        uia.SetGlobalSearchTimeout(10.0)
+        return Msg
+    
+    def LoadMoreMessage(self, n=0.1):
+        '''定位到当前聊天页面，并往上滚动鼠标滚轮，加载更多聊天记录到内存'''
+        n = 0.1 if n&lt;0.1 else 1 if n&gt;1 else n
+        self.MsgList.WheelUp(wheelTimes=int(500*n), waitTime=0.1)
+        
+    def SendScreenshot(self, name=None, classname=None):
+        '''发送某个桌面程序的截图，如：微信、记事本...
+        name : 要发送的桌面程序名字，如：微信
+        classname : 要发送的桌面程序类别名，一般配合 spy 小工具使用，以获取类名，如：微信的类名为 WeChatMainWndForPC'''
+        if name and classname:
+            return 0
+        else:
+            hwnd = win32gui.FindWindow(classname, name)
+        if hwnd:
+            WxUtils.Screenshot(hwnd)
+            self.SendClipboard()
+            return 1
+        else:
+            return 0
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://blog.howardjones.cn/post-images/1704462215831.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://blog.howardjones.cn/post-images/1704459513991.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+</feed>
